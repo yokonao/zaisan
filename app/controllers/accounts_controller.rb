@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
   def create
     @account = current_user.accounts.build(account_params)
     if @account.save
-      redirect_to @account, notice: "口座を作成しました"
+      redirect_to dashboard_path, notice: "口座を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
 
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: "口座情報を更新しました"
+      redirect_to dashboard_path, notice: "口座情報を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end

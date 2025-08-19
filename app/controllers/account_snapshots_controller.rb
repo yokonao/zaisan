@@ -10,7 +10,7 @@ class AccountSnapshotsController < ApplicationController
   def create
     @snapshot = @account.account_snapshots.build(snapshot_params)
     if @snapshot.save
-      redirect_to @account, notice: "残高を記録しました"
+      redirect_to dashboard_path, notice: "残高を記録しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -18,7 +18,7 @@ class AccountSnapshotsController < ApplicationController
 
   def destroy
     @snapshot.destroy
-    redirect_to @account, notice: "スナップショットを削除しました"
+    redirect_to dashboard_path, notice: "スナップショットを削除しました"
   end
 
   private
