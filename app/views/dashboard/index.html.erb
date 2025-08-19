@@ -61,27 +61,4 @@
     <% end %>
   </div>
 
-  <!-- Recent Activity -->
-  <% if @recent_snapshots.any? %>
-    <div class="bg-white rounded-xl shadow-lg p-6">
-      <h2 class="text-xl font-bold text-gray-800 mb-4">最近の記録</h2>
-      <div class="space-y-3">
-        <% @recent_snapshots.each do |snapshot| %>
-          <div class="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
-            <div>
-              <p class="font-medium text-gray-800">
-                <%= snapshot.account.name || "名称未設定" %>
-              </p>
-              <p class="text-sm text-gray-500">
-                <%= snapshot.recorded_at.strftime("%Y/%m/%d %H:%M") %>
-              </p>
-            </div>
-            <div class="text-lg font-bold text-gray-900">
-              ¥<%= number_with_delimiter(snapshot.amount) %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
 </div>

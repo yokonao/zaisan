@@ -4,10 +4,6 @@ class DashboardController < ApplicationController
   def index
     @accounts = current_user.accounts.includes(:account_snapshots)
     @total_amount = calculate_total_amount
-    @recent_snapshots = AccountSnapshot.joins(:account)
-                                      .where(accounts: { user_id: current_user.id })
-                                      .order(recorded_at: :desc)
-                                      .limit(10)
   end
 
   private
