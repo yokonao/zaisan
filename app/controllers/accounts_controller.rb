@@ -2,10 +2,6 @@ class AccountsController < ApplicationController
   before_action :require_login
   before_action :set_account, only: [ :show, :edit, :update, :destroy ]
 
-  def index
-    @accounts = current_user.accounts
-  end
-
   def show
     @snapshots = @account.account_snapshots.order(recorded_at: :desc).limit(30)
   end
@@ -36,7 +32,7 @@ class AccountsController < ApplicationController
 
   def destroy
     @account.destroy
-    redirect_to accounts_path, notice: "口座を削除しました"
+    redirect_to dashboard_path, notice: "口座を削除しました"
   end
 
   private

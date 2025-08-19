@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "dashboard#index"
 
   # Accounts and Snapshots
-  resources :accounts do
+  resources :accounts, only: [ :show, :new, :create, :edit, :update, :destroy ] do
     resources :account_snapshots, only: [ :new, :create, :destroy ]
   end
 end
