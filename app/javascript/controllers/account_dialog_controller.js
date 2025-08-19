@@ -4,7 +4,9 @@ export default class extends Controller {
   static targets = [
     "editDialog", "editForm", "nameInput", "typeInput", "descriptionInput",
     "recordDialog", "recordForm", "amountInput", "recordedAtInput", 
-    "recordAccountName", "recordAccountType", "latestSnapshot", "latestAmount", "latestDate"
+    "recordAccountName", "recordAccountType", "latestSnapshot", "latestAmount", "latestDate",
+    "newDialog", "newForm", "newNameInput", "newTypeInput", "newDescriptionInput",
+    "errorContainer", "errorList"
   ]
 
   openEdit(event) {
@@ -86,5 +88,23 @@ export default class extends Controller {
 
   closeRecord() {
     this.recordDialogTarget.classList.add("hidden")
+  }
+
+  openNew() {
+    // Clear form inputs
+    this.newNameInputTarget.value = ""
+    this.newTypeInputTarget.value = ""
+    this.newDescriptionInputTarget.value = ""
+    
+    // Hide error messages
+    this.errorContainerTarget.classList.add("hidden")
+    this.errorListTarget.innerHTML = ""
+    
+    // Show dialog
+    this.newDialogTarget.classList.remove("hidden")
+  }
+
+  closeNew() {
+    this.newDialogTarget.classList.add("hidden")
   }
 }

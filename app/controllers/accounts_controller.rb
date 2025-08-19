@@ -6,16 +6,17 @@ class AccountsController < ApplicationController
     @snapshots = @account.account_snapshots.order(recorded_at: :desc).limit(30)
   end
 
-  def new
-    @account = current_user.accounts.build
-  end
-
   def create
     @account = current_user.accounts.build(account_params)
-    if @account.save
-      redirect_to dashboard_path, notice: "口座を作成しました"
-    else
-      render :new, status: :unprocessable_entity
+    
+    respond_to do |format|
+      if @account.save
+        format.html { redirect_to dashboard_path, notice: "口座を作成しました" }
+        format.turbo_stream { redirect_to dashboard_path, notice: "口座を作成しました" }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render json: { errors: @account.errors.full_messages }, status: :unprocessable_entity }
+      end
     end
   end
 
