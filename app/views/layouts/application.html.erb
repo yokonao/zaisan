@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Zaisan" %></title>
+    <title><%= content_for(:title) || "Zaisan - 資産管理" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -22,7 +22,53 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 min-h-screen">
+    <% if logged_in? %>
+      <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+          <div class="flex justify-between items-center py-4">
+            <div class="flex items-center space-x-8">
+              <%= link_to root_path, class: "flex items-center space-x-2" do %>
+                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-xl font-bold text-gray-800">財産管理</span>
+              <% end %>
+              
+              <div class="hidden md:flex space-x-6">
+                <%= link_to "ダッシュボード", dashboard_path, class: "text-gray-700 hover:text-indigo-600 transition" %>
+                <%= link_to "口座一覧", accounts_path, class: "text-gray-700 hover:text-indigo-600 transition" %>
+                <%= link_to "新規口座", new_account_path, class: "text-gray-700 hover:text-indigo-600 transition" %>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <span class="text-sm text-gray-600"><%= current_user.email %></span>
+              <%= button_to "ログアウト", logout_path, method: :delete, class: "bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg text-sm text-gray-700 transition" %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+    
+    <% if notice.present? %>
+      <div class="container mx-auto px-6 mt-4">
+        <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg" role="alert">
+          <p><%= notice %></p>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if alert.present? %>
+      <div class="container mx-auto px-6 mt-4">
+        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg" role="alert">
+          <p><%= alert %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <main class="container mx-auto px-6 py-8">
+      <%= yield %>
+    </main>
   </body>
 </html>

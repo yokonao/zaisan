@@ -7,8 +7,8 @@ class CreateAccountSnapshots < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
-    
-    add_index :account_snapshots, [:account_id, :recorded_at], order: { recorded_at: :desc }
+
+    add_index :account_snapshots, [ :account_id, :recorded_at ], order: { recorded_at: :desc }
     add_index :account_snapshots, :recorded_at, order: { recorded_at: :desc }
   end
 end
