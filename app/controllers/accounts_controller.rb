@@ -11,8 +11,8 @@ class AccountsController < ApplicationController
     
     respond_to do |format|
       if @account.save
-        format.html { redirect_to dashboard_path, notice: "口座を作成しました" }
-        format.turbo_stream { redirect_to dashboard_path, notice: "口座を作成しました" }
+        format.html { redirect_to root_path, notice: "口座を作成しました" }
+        format.turbo_stream { redirect_to root_path, notice: "口座を作成しました" }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.turbo_stream { render json: { errors: @account.errors.full_messages }, status: :unprocessable_entity }
@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
 
   def update
     if @account.update(account_params)
-      redirect_to dashboard_path, notice: "口座情報を更新しました"
+      redirect_to root_path, notice: "口座情報を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
 
   def destroy
     @account.destroy
-    redirect_to dashboard_path, notice: "口座を削除しました"
+    redirect_to root_path, notice: "口座を削除しました"
   end
 
   private

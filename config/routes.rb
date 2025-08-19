@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  # Dashboard
-  get "dashboard", to: "dashboard#index"
-
   # Accounts and Snapshots
   resources :accounts, only: [ :create, :update, :destroy ] do
     resources :account_snapshots, only: [ :create, :destroy ]

@@ -6,15 +6,15 @@ class AccountSnapshotsController < ApplicationController
   def create
     @snapshot = @account.account_snapshots.build(snapshot_params)
     if @snapshot.save
-      redirect_to dashboard_path, notice: "残高を記録しました"
+      redirect_to root_path, notice: "残高を記録しました"
     else
-      redirect_to dashboard_path, alert: "残高の記録に失敗しました: #{@snapshot.errors.full_messages.join(', ')}"
+      redirect_to root_path, alert: "残高の記録に失敗しました: #{@snapshot.errors.full_messages.join(', ')}"
     end
   end
 
   def destroy
     @snapshot.destroy
-    redirect_to dashboard_path, notice: "スナップショットを削除しました"
+    redirect_to root_path, notice: "スナップショットを削除しました"
   end
 
   private
