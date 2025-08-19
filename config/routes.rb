@@ -24,6 +24,6 @@ Rails.application.routes.draw do
 
   # Accounts and Snapshots
   resources :accounts, only: [ :new, :create, :update, :destroy ] do
-    resources :account_snapshots, only: [ :new, :create, :destroy ]
+    resources :account_snapshots, only: [ :create, :destroy ]
   end
 end

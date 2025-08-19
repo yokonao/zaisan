@@ -3,16 +3,12 @@ class AccountSnapshotsController < ApplicationController
   before_action :set_account
   before_action :set_snapshot, only: [ :destroy ]
 
-  def new
-    @snapshot = @account.account_snapshots.build
-  end
-
   def create
     @snapshot = @account.account_snapshots.build(snapshot_params)
     if @snapshot.save
       redirect_to dashboard_path, notice: "残高を記録しました"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to dashboard_path, alert: "残高の記録に失敗しました: #{@snapshot.errors.full_messages.join(', ')}"
     end
   end
 
