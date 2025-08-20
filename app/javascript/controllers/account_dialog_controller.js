@@ -24,11 +24,11 @@ export default class extends Controller {
     this.descriptionInputTarget.value = accountDescription
 
     // Show dialog
-    this.editDialogTarget.classList.remove("hidden")
+    this.editDialogTarget.showModal()
   }
 
   closeEdit() {
-    this.editDialogTarget.classList.add("hidden")
+    this.editDialogTarget.close()
   }
 
   openRecord(event) {
@@ -83,11 +83,11 @@ export default class extends Controller {
     this.amountInputTarget.value = ""
 
     // Show dialog
-    this.recordDialogTarget.classList.remove("hidden")
+    this.recordDialogTarget.showModal()
   }
 
   closeRecord() {
-    this.recordDialogTarget.classList.add("hidden")
+    this.recordDialogTarget.close()
   }
 
   openNew() {
@@ -101,10 +101,10 @@ export default class extends Controller {
     this.errorListTarget.innerHTML = ""
     
     // Show dialog
-    this.newDialogTarget.classList.remove("hidden")
+    this.newDialogTarget.showModal()
   }
 
   closeNew() {
-    this.newDialogTarget.classList.add("hidden")
+    this.newDialogTarget.close()
   }
 }

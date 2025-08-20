@@ -75,8 +75,8 @@
   </div>
 
   <!-- Edit Account Dialog -->
-  <div data-account-dialog-target="editDialog" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+  <dialog data-account-dialog-target="editDialog" class="fixed inset-0 bg-transparent bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 w-96 shadow-lg rounded-md bg-white">
       <div class="mt-3">
         <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">口座情報を編集</h3>
         <%= form_with url: "#", method: :patch, data: { account_dialog_target: "editForm" }, local: false do |form| %>
@@ -116,11 +116,11 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </dialog>
 
   <!-- Record Snapshot Dialog -->
-  <div data-account-dialog-target="recordDialog" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+  <dialog data-account-dialog-target="recordDialog" class="fixed inset-0 bg-transparent bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 w-96 shadow-lg rounded-md bg-white">
       <div class="mt-3">
         <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2">残高を記録</h3>
         <p class="text-gray-600 mb-4">
@@ -157,11 +157,11 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </dialog>
 
   <!-- New Account Dialog -->
-  <div data-account-dialog-target="newDialog" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+  <dialog data-account-dialog-target="newDialog" class="fixed inset-0 bg-transparent bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 w-96 shadow-lg rounded-md bg-white">
       <div class="mt-3">
         <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">新規口座登録</h3>
         <%= form_with url: accounts_path, method: :post, data: { account_dialog_target: "newForm" }, local: false do |form| %>
@@ -201,6 +201,6 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </dialog>
 
 </div>
