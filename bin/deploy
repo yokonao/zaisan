@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export KAMAL_REGISTRY_PASSWORD="$(gopass show docker-hub-pat)"
-exec bin/kamal deploy

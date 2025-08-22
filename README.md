@@ -36,3 +36,9 @@ http://localhost:3001 からアプリケーションにアクセスできます�
 - [🛤 Rails 8 は SQLite で大幅に強化された「個人が扱えるフレームワーク」（翻訳）](https://note.com/yasslab/n/n89d6850e296d)
   - SQLite3 で本番環境のアプリケーション運用できるよという話
   - シンプル・軽量を保つことで SQLite3 のメリットを最大限活かす
+
+## デプロイ
+
+```
+bin/kamal deploy
+```
