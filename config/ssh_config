@@ -1,4 +1,3 @@
 Host zaisan.yokonao
   Hostname zaisan.yokonao.xyz
   User debian
-  IdentityFile ~/.ssh/id_ed25519
