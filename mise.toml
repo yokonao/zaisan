@@ -5,3 +5,8 @@ ruby = "3.4"
 run = """
 bin/rubocop -A
 """
+
+[tasks.deploy]
+run = """
+bin/deploy
+"""
