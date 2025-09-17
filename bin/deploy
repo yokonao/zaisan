@@ -45,11 +45,7 @@ for server in "${SSH_REMOTE_SERVERS[@]}"; do
     SSH_FORWARDER_PIDS+=($!)
 done
 
-# build image and load it to local image store
-bin/kamal build push --output docker
-
-# push image to local registry server
-docker push "$LOCAL_REGISTRY_SERVER_URL/$IMAGE_NAME:$COMMIT_HASH"
-
-# pull image on remote server and rollout docker container
-bin/kamal deploy --skip-push
+# 1. build image and push it to the local registry server
+# 2. pull image on the remote server
+# 3. rollout docker container
+bin/kamal deploy
