@@ -7,7 +7,7 @@ image: yokonao/zaisan
 # Deploy to these servers.
 servers:
   web:
-    - 220.158.19.133
+    - 162.43.21.190
 
 ssh:
   user: debian
